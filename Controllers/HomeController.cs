@@ -35,18 +35,12 @@ namespace Paypal.NET.Controllers
         {
             DbSet<IPN> items = _context.IPNs;
 
-            //this is temporary with hardcoded data
-            //List<IPN> items = new List<IPN>();
-            //var temp = new IPN
-            //{
-            //    paymentID = "123",
-            //    create_time = DateTime.Now.ToString("dd'/'MM'/'yyyy , HH:mm"),
-            //    payerFirstName = "Bob",
-            //    payerEmail = "bob@email.ca",
-            //    amount = "123",
-            //    paymentMethod = "paypal"
-            //};
-            //items.Add(temp);
+            foreach (var item in items)
+            {
+                DateTime temp = DateTime.Parse(item.create_time);
+                var formatedDate = temp.ToString("dd'/'MM'/'yyyy - HH:mm");
+                item.create_time = formatedDate;
+            }
 
             return View(items);
         }

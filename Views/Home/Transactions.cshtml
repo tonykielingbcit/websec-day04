@@ -40,7 +40,8 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            var completeAmountInfo = $"{item.currency} {item.amount}";
+            <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.create_time)
             </td>
@@ -51,14 +52,8 @@
                 @Html.DisplayFor(modelItem => item.payerEmail)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.amount)
+                @completeAmountInfo
             </td>
-@*            <td>
-                @Html.DisplayFor(modelItem => item.currency)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.intent)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.paymentMethod)
             </td>
